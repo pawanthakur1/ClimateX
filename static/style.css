@@ -983,13 +983,11 @@ option{
 
 .developer-tag{
 
-    position: fixed;
+    position: absolute;
 
-    bottom: 10px;
+    bottom: 20px;
 
-    left: 50%;
-
-    transform: translateX(-50%);
+    right: 20px;
 
     background: rgba(255,255,255,0.08);
 
@@ -1003,7 +1001,7 @@ option{
 
     font-size: 14px;
 
-    z-index: 9999;
+    z-index: 999;
 
     border: 1px solid rgba(255,255,255,0.1);
 
