@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>ClimateX</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+
+            <img
+            src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png">
+
+            <h1>
+                Climate<span>X</span>
+            </h1>
+
+        </div>
+
+        <div class="top-right">
+
+            <!-- TEMP TOGGLE -->
+
+            <div class="temp-toggle">
+
+                <button
+                id="celsiusBtn"
+                class="active">
+                    °C
+                </button>
+
+                <button
+                id="fahrenheitBtn">
+                    °F
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-container">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+            type="text"
+            id="searchInput"
+            placeholder="Search city, district or block...">
+
+            <div id="suggestions"
+            class="suggestions-box">
+            </div>
+
+        </div>
+
+        <button id="searchBtn">
+            Search
+        </button>
+
+    </div>
+
+
+    <!-- DROPDOWNS -->
+
+    <div class="dropdowns">
+
+        <select id="state">
+
+            <option>Bihar</option>
+
+        </select>
+
+        <select id="district">
+
+            <option>Select District</option>
+
+        </select>
+
+        <select id="city">
+
+            <option>Select City</option>
+
+        </select>
+
+    </div>
+
+
+    <!-- MAIN GRID -->
+
+    <div class="main-grid">
+
+
+        <!-- LEFT SECTION -->
+
+        <div class="left-section">
+
+            <!-- WEATHER CARD -->
+
+            <div class="weather-card">
+
+                <div class="weather-left">
+
+                    <h2 id="cityName">
+                        Purnia
+                    </h2>
+
+                    <p>
+                        Bihar, India
+                    </p>
+
+                    <img
+                    id="weatherIcon"
+                    src="https://openweathermap.org/img/wn/02d@4x.png">
+
+                </div>
+
+                <div class="weather-center">
+
+                    <h1 id="temp">
+                        27°C
+                    </h1>
+
+                    <p id="condition">
+                        Scattered Clouds
+                    </p>
+
+                    <div class="sun-time">
+
+                        <span>
+                            🌅
+                            <span id="sunrise">
+                                05:00 AM
+                            </span>
+                        </span>
+
+                        <span>
+                            🌇
+                            <span id="sunset">
+                                06:30 PM
+                            </span>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DETAILS -->
+
+                <div class="weather-details">
+
+                    <div class="detail-box">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                        <h3>
+                            Humidity
+                        </h3>
+
+                        <p id="humidity">
+                            71%
+                        </p>
+
+                    </div>
+
+                    <div class="detail-box">
+
+                        <i class="fa-solid fa-wind"></i>
+
+                        <h3>
+                            Wind
+                        </h3>
+
+                        <p id="wind">
+                            6 km/h
+                        </p>
+
+                    </div>
+
+                    <div class="detail-box">
+
+                        <i class="fa-solid fa-gauge-high"></i>
+
+                        <h3>
+                            Pressure
+                        </h3>
+
+                        <p id="pressure">
+                            1004 hPa
+                        </p>
+
+                    </div>
+
+                    <div class="detail-box">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                        <h3>
+                            Visibility
+                        </h3>
+
+                        <p id="visibility">
+                            10 km
+                        </p>
+
+                    </div>
+
+                    <div class="detail-box">
+
+                        <i class="fa-solid fa-sun"></i>
+
+                        <h3>
+                            UV Index
+                        </h3>
+
+                        <p id="uv">
+                            6
+                        </p>
+
+                    </div>
+
+                    <div class="detail-box">
+
+                        <i class="fa-solid fa-leaf"></i>
+
+                        <h3>
+                            Air Quality
+                        </h3>
+
+                        <p id="airQuality">
+                            Good
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORECAST -->
+
+            <div class="forecast-section">
+
+                <div class="forecast-header">
+
+                    <h2>
+                        5 Day Forecast
+                    </h2>
+
+                </div>
+
+                <div
+                id="forecast"
+                class="forecast">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SECTION -->
+
+        <div class="right-section">
+
+            <!-- CLOCK -->
+
+            <div class="side-card clock-card">
+
+                <h2 id="liveClock">
+                    01:48:50 AM
+                </h2>
+
+                <p id="liveDate">
+                    Tue, 27 May 2026
+                </p>
+
+            </div>
+
+
+            <!-- HIGHLIGHTS -->
+
+            <div class="side-card">
+
+                <h3>
+                    Today's Highlights
+                </h3>
+
+                <div class="highlight">
+
+                    <span>
+                        🌡 Max Temp
+                    </span>
+
+                    <span id="maxTemp">
+                        32°C
+                    </span>
+
+                </div>
+
+                <div class="highlight">
+
+                    <span>
+                        🌡 Min Temp
+                    </span>
+
+                    <span id="minTemp">
+                        25°C
+                    </span>
+
+                </div>
+
+                <div class="highlight">
+
+                    <span>
+                        🌧 Chance of Rain
+                    </span>
+
+                    <span id="rainChance">
+                        20%
+                    </span>
+
+                </div>
+
+                <div class="highlight">
+
+                    <span>
+                        🌅 Sunrise
+                    </span>
+
+                    <span id="sunrise2">
+                        05:00 AM
+                    </span>
+
+                </div>
+
+                <div class="highlight">
+
+                    <span>
+                        🌇 Sunset
+                    </span>
+
+                    <span id="sunset2">
+                        06:30 PM
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- WIND -->
+
+            <div class="side-card">
+
+                <h3>
+                    Wind Direction
+                </h3>
+
+                <div class="wind-circle">
+
+                    <div class="needle"></div>
+
+                </div>
+
+                <h1 id="windDirection">
+                    NE
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='biharData.js') }}"></script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
